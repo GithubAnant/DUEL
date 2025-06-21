@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUEL - Dialogues Unfolding for Eternity and Lunacy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <!-- Home Page -->
+        <div class="home-page" id="homePage">
+            <h1 class="title">DUEL</h1>
+            <p class="subtitle">Dialogues Unfolding for Eternity and Lunacy</p>
+            
+            <div class="input-container">
+                <textarea 
+                    class="text-input" 
+                    id="dreamInput"
+                    placeholder="Write about your dreams here...(minimum 2 words)"
+                    rows="3"
+                ></textarea>
+                <button class="dice-button" id="diceBtn">🎲</button>
+            </div>
+            
+            <div class="dropdowns">
+                <select class="dropdown" id="fighter1">
+                    <option value="">Select Fighter 1</option>
+                    <option value="Me">Me</option>
+                    <option value="18 y/o American">18 y/o American</option>
+                    <option value="25 y/o American">25 y/o American</option>
+                    <option value="32 y/o American">32 y/o American</option>
+                    <option value="45 y/o American">45 y/o American</option>
+                    <option value="22 y/o British">22 y/o British</option>
+                    <option value="28 y/o British">28 y/o British</option>
+                    <option value="35 y/o British">35 y/o British</option>
+                    <option value="19 y/o Chinese">19 y/o Chinese</option>
+                    <option value="26 y/o Chinese">26 y/o Chinese</option>
+                    <option value="41 y/o Chinese">41 y/o Chinese</option>
+                </select>
+                
+                <select class="dropdown" id="fighter2">
+                    <option value="">Select Fighter 2</option>
+                    <option value="Me">Me</option>
+                    <option value="23 y/o French">23 y/o French</option>
+                    <option value="30 y/o French">30 y/o French</option>
+                    <option value="38 y/o French">38 y/o French</option>
+                    <option value="20 y/o German">20 y/o German</option>
+                    <option value="27 y/o German">27 y/o German</option>
+                    <option value="18 y/o Indian">18 y/o Indian</option>
+                    <option value="24 y/o Indian">24 y/o Indian</option>
+                    <option value="31 y/o Indian">31 y/o Indian</option>
+                    <option value="20 y/o Japanese">20 y/o Japanese</option>
+                    <option value="29 y/o Japanese">29 y/o Japanese</option>
+                </select>
+            </div>
+            
+            <button class="fight-btn" id="fightBtn">FIGHT</button>
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+        </div>
+        
+        <!-- Fight Page -->
+        <div class="fight-page" id="fightPage">
+            <button class="go-back-btn" id="goBackBtn">← Go Back</button>
+            
+            <div class="fight-container">
+                <div class="fighters-info">
+                    <div class="fighter-label" id="fighter1Display">Fighter 1</div>
+                    <div class="vs-divider">VS</div>
+                    <div class="fighter-label" id="fighter2Display">Fighter 2</div>
+                </div>
+                
+                <div class="conversation-box">
+                    <div class="user-input-container" id="userInputContainer">
+                        <textarea 
+                            class="user-input" 
+                            id="userInput"
+                            placeholder="Type your message here..."
+                        ></textarea>
+                        <button class="send-btn" id="sendBtn">Send</button>
+                    </div>
+                    
+                    <div class="conversation-content" id="conversationContent">
+                        <!-- Messages will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated stars background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 100;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+
+            // Add continuous fade effect
+            setInterval(() => {
+                const stars = document.querySelectorAll('.star');
+                stars.forEach(star => {
+                    if (Math.random() > 0.7) {
+                        star.classList.add('fade');
+                        setTimeout(() => {
+                            star.classList.remove('fade');
+                        }, 1000);
+                    }
+                });
+            }, 2000);
+        }
+
+        // Initialize stars
+        createStars();
+
+        // Get elements
+        const homePage = document.getElementById('homePage');
+        const fightPage = document.getElementById('fightPage');
+        const fightBtn = document.getElementById('fightBtn');
+        const goBackBtn = document.getElementById('goBackBtn');
+        const fighter1Select = document.getElementById('fighter1');
+        const fighter2Select = document.getElementById('fighter2');
+        const fighter1Display = document.getElementById('fighter1Display');
+        const fighter2Display = document.getElementById('fighter2Display');
+        const dreamInput = document.getElementById('dreamInput');
+        const diceBtn = document.getElementById('diceBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const userInputContainer = document.getElementById('userInputContainer');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const conversationContent = document.getElementById('conversationContent');
+
+        // Store state
+        let gameState = {
+            dreamText: '',
+            fighter1: '',
+            fighter2: ''
+        };
+
+        // Dice button functionality
+        diceBtn.addEventListener('click', function() {
+            // 🔥 Add random dream generation logic here
+            console.log('🔥 Dice clicked - add random dream generation here');
+        });
+
+        // Fight button functionality
+        fightBtn.addEventListener('click', function() {
+            const fighter1Value = fighter1Select.value;
+            const fighter2Value = fighter2Select.value;
+            const dreamText = dreamInput.value.trim();
+
+            // Clear previous error message
+            errorMessage.style.display = 'none';
+
+            // Check if both fighters are "Me"
+            if (fighter1Value === 'Me' && fighter2Value === 'Me') {
+                errorMessage.textContent = 'Both fighters cannot be "Me"!';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            if (!fighter1Value || !fighter2Value) {
+                errorMessage.textContent = 'Please select both fighters!';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // 🔥 Change word limit here
+            const wordCount = dreamText.split(/\s+/).filter(word => word.length > 0).length;
+            if (wordCount < 2) {
+                errorMessage.textContent = 'Please write at least 2 words about your dreams!';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Save state
+            gameState.dreamText = dreamText;
+            gameState.fighter1 = fighter1Value;
+            gameState.fighter2 = fighter2Value;
+
+            // Update fight page
+            fighter1Display.textContent = fighter1Value;
+            fighter2Display.textContent = fighter2Value;
+
+            // Show user input if either fighter is "Me"
+            if (fighter1Value === 'Me' || fighter2Value === 'Me') {
+                userInputContainer.classList.add('show');
+            } else {
+                userInputContainer.classList.remove('show');
+            }
+
+            // Clear previous conversation
+            conversationContent.innerHTML = '';
+
+            // Switch to fight page
+            homePage.style.display = 'none';
+            fightPage.style.display = 'block';
+        });
+
+        // Go back button functionality
+        goBackBtn.addEventListener('click', function() {
+            // Restore state
+            dreamInput.value = gameState.dreamText;
+            fighter1Select.value = gameState.fighter1;
+            fighter2Select.value = gameState.fighter2;
+
+            // Switch to home page
+            fightPage.style.display = 'none';
+            homePage.style.display = 'block';
+        });
+
+        // Send button functionality
+        sendBtn.addEventListener('click', function() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            // Add user message to conversation
+            addMessage(message, 'user', 'You');
+            userInput.value = '';
+
+            // Simulate AI response (placeholder)
+            setTimeout(() => {
+                const opponentName = gameState.fighter1 === 'Me' ? gameState.fighter2 : gameState.fighter1;
+                addMessage('This is a placeholder response from the AI opponent.', 'right', opponentName);
+            }, 1000);
+        });
+
+        // Enter key to send message
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendBtn.click();
+            }
+        });
+
+        // Function to add messages to conversation
+        function addMessage(text, type, author) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const authorDiv = document.createElement('div');
+            authorDiv.className = 'message-author';
+            authorDiv.textContent = author;
+            
+            const textDiv = document.createElement('div');
+            textDiv.textContent = text;
+            
+            messageDiv.appendChild(authorDiv);
+            messageDiv.appendChild(textDiv);
+            conversationContent.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            conversationContent.scrollTop = conversationContent.scrollHeight;
+        }
+    </script>
+</body>
+</html>
