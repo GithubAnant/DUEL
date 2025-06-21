@@ -49,6 +49,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     padding: 2rem;
+    padding-bottom: 4.2rem;
 }
 
 .home-page {
@@ -373,5 +374,89 @@ body {
     
     .conversation-content {
         padding-top: 1rem;
+    }
+}
+
+/* Footer Styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(51, 51, 51, 0.4);
+    z-index: 100;
+    padding: 0.7rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 2rem;
+}
+
+.copyright {
+    color: rgba(136, 136, 136, 0.8);
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(51, 51, 51, 0.6);
+    color: rgba(136, 136, 136, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(68, 68, 68, 0.6);
+}
+
+.social-icon:hover {
+    background: rgba(68, 68, 68, 0.8);
+    color: rgba(224, 224, 224, 0.9);
+    transform: translateY(-1.4px);
+    box-shadow: 0 2.8px 8.4px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 0.7rem;
+        text-align: center;
+    }
+    
+    .social-icons {
+        gap: 0.35rem;
+    }
+    
+    .social-icon {
+        width: 24.5px;
+        height: 24.5px;
+    }
+    
+    .social-icon svg {
+        width: 12.6px;
+        height: 12.6px;
     }
 } 
