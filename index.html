@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="stars" id="stars"></div>
+
     
     <div class="container">
         <!-- Home Page -->
@@ -150,10 +151,67 @@
             fighter2: ''
         };
 
+        // List of 10 random arguments for the dice button
+  const randomArguments = [
+    "Pineapple belongs on pizza.",
+    "Cows are time travelers sent to warn us about veganism.",
+    "Sharks are sheriffs of the sea.",
+    "Toasters are just metal bread coffins.",
+    "The moon is Earth's surveillance camera.",
+    "Octopuses are aliens doing field research.",
+    "Clouds are just sky jellyfish.",
+    "Sneezing is your body trying to eject your soul.",
+    "Pigeons are government-issued drones.",
+    "The Earth is flat but emotionally round.",
+    "WiFi signals cause dreams.",
+    "Bananas are trying to overthrow oranges as the top fruit.",
+    "Mirrors are portals to alternate realities, but only at 3 AM.",
+    "Plants are secretly judging us.",
+    "Tacos are sandwiches with trust issues.",
+    "Coffee is just bean soup.",
+    "Humans are just moist robots.",
+    "Cheese is spoiled milk we learned to enjoy.",
+    "Time is a flat spaghetti.",
+    "Elevators are vertical teleportation devices.",
+    "AirPods are modern status totems.",
+    "Cats are liquid.",
+    "Crayons taste different in alternate dimensions.",
+    "The sun is a very angry flashlight.",
+    "Rain is the Earth crying because of our bad memes.",
+    "Chairs are just domesticated tables.",
+    "Windows are just transparent walls.",
+    "Hats are portable roofs for your head.",
+    "Left-handed people are dimensionally shifted.",
+    "Ice cubes are time-traveling water.",
+    "Spaghetti is long rice.",
+    "Your phone listens and judges your music taste.",
+    "Dreams are psychological defense mechanisms that help us cope with trauma and stress.",
+    "Your reflection is the real you, stuck in mirror jail.",
+    "Bluetooth is just modern witchcraft.",
+    "The alphabet is a government code.",
+    "Shoes are foot prisons.",
+    "Toothpaste is spicy icing.",
+    "The color blue doesn't exist without sadness.",
+    "Frogs are failed princes.",
+    "Bubble wrap is a stress portal.",
+    "Birds invented jazz.",
+    "Ants have a communist society and are planning a coup.",
+    "Coins are tiny metal lies.",
+    "Fire is just spicy air.",
+    "Sand is nature's glitter.",
+    "Snakes are noodles with anxiety.",
+    "Zebras are horses in prison pajamas.",
+    "Lemons are angry oranges.",
+    "Mountains are Earth's pimples.",
+    "Bees are just furry syringes."
+  ];
+
+
         // Dice button functionality
         diceBtn.addEventListener('click', function() {
-            // 🔥 Add random dream generation logic here
-            console.log('🔥 Dice clicked - add random dream generation here');
+            const randomIndex = Math.floor(Math.random() * randomArguments.length);
+            const randomArgument = randomArguments[randomIndex];
+            dreamInput.value = randomArgument;
         });
 
         // Fight button functionality
