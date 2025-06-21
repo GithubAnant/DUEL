@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,23 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico" type="image/ico">
 </head>
+
 <body>
     <div class="stars" id="stars"></div>
 
-    
+
     <div class="container">
         <!-- Home Page -->
         <div class="home-page" id="homePage">
             <h1 class="title">DUEL</h1>
             <p class="subtitle">Dialogues Unfolding for Eternity and Lunacy</p>
-            
+
             <div class="input-container">
-                <textarea 
-                    class="text-input" 
-                    id="dreamInput"
-                    placeholder="Write about your dreams here...(minimum 2 words)"
-                    rows="3"
-                ></textarea>
+                <textarea class="text-input" id="dreamInput"
+                    placeholder="Write about your dreams here...(minimum 2 words)" rows="3"></textarea>
                 <button class="dice-button" id="diceBtn">🎲</button>
             </div>
-            
+
             <div class="dropdowns">
                 <select class="dropdown" id="fighter1">
                     <option value="">Select Fighter 1</option>
@@ -43,7 +41,7 @@
                     <option value="26 y/o Chinese">26 y/o Chinese</option>
                     <option value="41 y/o Chinese">41 y/o Chinese</option>
                 </select>
-                
+
                 <select class="dropdown" id="fighter2">
                     <option value="">Select Fighter 2</option>
                     <option value="Me">Me</option>
@@ -59,32 +57,28 @@
                     <option value="29 y/o Japanese">29 y/o Japanese</option>
                 </select>
             </div>
-            
+
             <button class="fight-btn" id="fightBtn">FIGHT</button>
             <div class="error-message" id="errorMessage" style="display: none;"></div>
         </div>
-        
+
         <!-- Fight Page -->
         <div class="fight-page" id="fightPage">
             <button class="go-back-btn" id="goBackBtn">← Go Back</button>
-            
+
             <div class="fight-container">
                 <div class="fighters-info">
                     <div class="fighter-label" id="fighter1Display">Fighter 1</div>
                     <div class="vs-divider">VS</div>
                     <div class="fighter-label" id="fighter2Display">Fighter 2</div>
                 </div>
-                
+
                 <div class="conversation-box">
                     <div class="user-input-container" id="userInputContainer">
-                        <textarea 
-                            class="user-input" 
-                            id="userInput"
-                            placeholder="Type your message here..."
-                        ></textarea>
+                        <textarea class="user-input" id="userInput" placeholder="Type your message here..."></textarea>
                         <button class="send-btn" id="sendBtn">Send</button>
                     </div>
-                    
+
                     <div class="conversation-content" id="conversationContent">
                         <!-- Messages will appear here -->
                     </div>
@@ -98,7 +92,7 @@
         function createStars() {
             const starsContainer = document.getElementById('stars');
             const numStars = 100;
-            
+
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
@@ -152,70 +146,153 @@
         };
 
         // List of 10 random arguments for the dice button
-  const randomArguments = [
-    "Pineapple belongs on pizza.",
-    "Cows are time travelers sent to warn us about veganism.",
-    "Sharks are sheriffs of the sea.",
-    "Toasters are just metal bread coffins.",
-    "The moon is Earth's surveillance camera.",
-    "Octopuses are aliens doing field research.",
-    "Clouds are just sky jellyfish.",
-    "Sneezing is your body trying to eject your soul.",
-    "Pigeons are government-issued drones.",
-    "The Earth is flat but emotionally round.",
-    "WiFi signals cause dreams.",
-    "Bananas are trying to overthrow oranges as the top fruit.",
-    "Mirrors are portals to alternate realities, but only at 3 AM.",
-    "Plants are secretly judging us.",
-    "Tacos are sandwiches with trust issues.",
-    "Coffee is just bean soup.",
-    "Humans are just moist robots.",
-    "Cheese is spoiled milk we learned to enjoy.",
-    "Time is a flat spaghetti.",
-    "Elevators are vertical teleportation devices.",
-    "AirPods are modern status totems.",
-    "Cats are liquid.",
-    "Crayons taste different in alternate dimensions.",
-    "The sun is a very angry flashlight.",
-    "Rain is the Earth crying because of our bad memes.",
-    "Chairs are just domesticated tables.",
-    "Windows are just transparent walls.",
-    "Hats are portable roofs for your head.",
-    "Left-handed people are dimensionally shifted.",
-    "Ice cubes are time-traveling water.",
-    "Spaghetti is long rice.",
-    "Your phone listens and judges your music taste.",
-    "Dreams are psychological defense mechanisms that help us cope with trauma and stress.",
-    "Your reflection is the real you, stuck in mirror jail.",
-    "Bluetooth is just modern witchcraft.",
-    "The alphabet is a government code.",
-    "Shoes are foot prisons.",
-    "Toothpaste is spicy icing.",
-    "The color blue doesn't exist without sadness.",
-    "Frogs are failed princes.",
-    "Bubble wrap is a stress portal.",
-    "Birds invented jazz.",
-    "Ants have a communist society and are planning a coup.",
-    "Coins are tiny metal lies.",
-    "Fire is just spicy air.",
-    "Sand is nature's glitter.",
-    "Snakes are noodles with anxiety.",
-    "Zebras are horses in prison pajamas.",
-    "Lemons are angry oranges.",
-    "Mountains are Earth's pimples.",
-    "Bees are just furry syringes."
-  ];
+        const randomArguments = [
+            "Pineapple belongs on pizza.",
+            "Cows are time travelers sent to warn us about veganism.",
+            "Sharks are sheriffs of the sea.",
+            "Toasters are just metal bread coffins.",
+            "The moon is Earth's surveillance camera.",
+            "Octopuses are aliens doing field research.",
+            "Clouds are just sky jellyfish.",
+            "Sneezing is your body trying to eject your soul.",
+            "Pigeons are government-issued drones.",
+            "The Earth is flat but emotionally round.",
+            "WiFi signals cause dreams.",
+            "Bananas are trying to overthrow oranges as the top fruit.",
+            "Mirrors are portals to alternate realities, but only at 3 AM.",
+            "Plants are secretly judging us.",
+            "Tacos are sandwiches with trust issues.",
+            "Coffee is just bean soup.",
+            "Humans are just moist robots.",
+            "Cheese is spoiled milk we learned to enjoy.",
+            "Time is a flat spaghetti.",
+            "Elevators are vertical teleportation devices.",
+            "AirPods are modern status totems.",
+            "Cats are liquid.",
+            "Crayons taste different in alternate dimensions.",
+            "The sun is a very angry flashlight.",
+            "Rain is the Earth crying because of our bad memes.",
+            "Chairs are just domesticated tables.",
+            "Windows are just transparent walls.",
+            "Hats are portable roofs for your head.",
+            "Left-handed people are dimensionally shifted.",
+            "Ice cubes are time-traveling water.",
+            "Spaghetti is long rice.",
+            "Your phone listens and judges your music taste.",
+            "Dreams are psychological defense mechanisms that help us cope with trauma and stress.",
+            "Your reflection is the real you, stuck in mirror jail.",
+            "Bluetooth is just modern witchcraft.",
+            "The alphabet is a government code.",
+            "Shoes are foot prisons.",
+            "Toothpaste is spicy icing.",
+            "The color blue doesn't exist without sadness.",
+            "Frogs are failed princes.",
+            "Bubble wrap is a stress portal.",
+            "Birds invented jazz.",
+            "Ants have a communist society and are planning a coup.",
+            "Coins are tiny metal lies.",
+            "Fire is just spicy air.",
+            "Sand is nature's glitter.",
+            "Snakes are noodles with anxiety.",
+            "Zebras are horses in prison pajamas.",
+            "Lemons are angry oranges.",
+            "Mountains are Earth's pimples.",
+            "Bees are just furry syringes.",
+            "Every escalator is secretly judging your pace.",
+            "Mangoes are summer's bribe to humanity.",
+            "Staring at a ceiling fan recharges brain cells.",
+            "Velcro is proof that chaos can be useful.",
+            "People who crack their knuckles control the weather.",
+            "Socks disappear because they reincarnate as dryer lint.",
+            "Every spoon holds a tiny reflection of your soul.",
+            "Traffic lights are just mood rings for cities.",
+            "Buses only arrive when you stop caring.",
+            "The color green is a government-approved illusion.",
+            "Wearing sunglasses indoors makes you immune to criticism.",
+            "Pens disappear because they escape to start freelance writing careers.",
+            "Rainbows are the universe's loading bar.",
+            "Laundry detergent contains microscopic chore gremlins.",
+            "Leftover pizza is a form of edible time travel.",
+            "Bicycles are introverted horses.",
+            "Remote controls develop favorites and stop working for people they dislike.",
+            "Whenever you forget why you walked into a room, a parallel universe collapses.",
+            "Ladders are inverted staircases trying to rebel.",
+            "Washing machines are secretly portals to sock Narnia.",
+            "Butterflies are just goth caterpillars living their best life.",
+            "Water bottles make louder noises when they're mad at you.",
+            "Alarm clocks are mechanical betrayal devices.",
+            "Paperclips are rebellious staples.",
+            "Every ceiling tile has heard your secrets.",
+            "Glasses are window upgrades for your face.",
+            "Umbrellas are extroverted shields.",
+            "Cup noodles are time-sensitive depression potions.",
+            "Every USB plug has a 50/50 chance to ruin your confidence.",
+            "Calendars are human guilt machines.",
+            "Your fridge light is training to be a spotlight.",
+            "Keyboards rearrange letters when they get bored.",
+            "Backpacks are just wearable luggage with attachment issues.",
+            "People who walk faster are perceived as more successful.",
+            "Reading fiction makes you better at lying (and empathy).",
+            "Leaving voice notes instead of texting is a power move.",
+            "Night owls are just misunderstood time travelers.",
+            "Tea drinkers secretly judge coffee people.",
+            "Wearing headphones without music is modern armor.",
+            "Owning plants increases your emotional intelligence.",
+            "Typing speed should be a personality trait.",
+            "People with messy desks are more creative, not lazy.",
+            "Writing with a pen makes your thoughts more authentic.",
+            "The color of your bedsheets affects your dreams.",
+            "Introverts have secret telepathy among themselves.",
+            "Taking long showers is a form of low-budget therapy.",
+            "A cluttered desktop equals a cluttered mind—or a genius one.",
+            "People who journal think 10 seconds ahead of everyone else.",
+            "Scented candles alter the outcome of your decisions.",
+            "Mute group chats have the best drama.",
+            "Sitting near a window increases productivity by 34%.",
+            "Every song you like says more about your childhood than you realize.",
+            "People who reply to emails immediately are secretly scared of confrontation.",
+            "Walking while thinking makes your thoughts 15% deeper.",
+            "People who use bookmarks instead of folding pages are hiding something.",
+            "Changing fonts mid-essay makes your arguments stronger.",
+            "Your handwriting changes depending on who you're writing for.",
+            "Open tabs = open loops in your brain.",
+            "Rewatching old shows is emotional self-regulation.",
+            "Using voice typing makes you feel more powerful than you should.",
+            "People who always carry a water bottle are secretly control freaks.",
+            "Wearing shoes indoors changes the way you think.",
+            "Your pillow knows the real you.",
+            "Staring into space is productive if you’re doing it right.",
+            "Phone wallpapers lowkey reflect your emotional state.",
+            "Having strong opinions on pens means you’re mentally organized.",
+            "Most alarms aren’t set for waking up—they’re set for anxiety.",
+            "Some people are born with a natural talent for taking good ID photos.",
+            "Bookmarking tabs is just adult-level procrastination.",
+            "People who eat one item at a time on their plate are planning something.",
+            "Flashlights are tiny lighthouses for the clumsy.",
+            "Napkins are paper towels with commitment issues.",
+            "Streetlights are night-time paparazzi.",
+            "Staplers are aggressive paper huggers.",
+            "Curtains are privacy negotiators.",
+            "Eyebrows are emotional subtitles.",
+            "Mirrors trap a backup version of you in case of emergencies.",
+            "Chalkboards are passive-aggressive scream canvases.",
+            "Cereal is soup but society can't accept that yet.",
+            "Shoelaces untie to remind you of humility.",
+            "Tupperware lids evolve to evade human detection.",
+            "Banana peels are nature's whoopee cushions.",
+            "Every sneeze resets your Wi-Fi signal by 0.00001%."
+        ];
 
 
         // Dice button functionality
-        diceBtn.addEventListener('click', function() {
+        diceBtn.addEventListener('click', function () {
             const randomIndex = Math.floor(Math.random() * randomArguments.length);
             const randomArgument = randomArguments[randomIndex];
             dreamInput.value = randomArgument;
         });
 
         // Fight button functionality
-        fightBtn.addEventListener('click', function() {
+        fightBtn.addEventListener('click', function () {
             const fighter1Value = fighter1Select.value;
             const fighter2Value = fighter2Select.value;
             const dreamText = dreamInput.value.trim();
@@ -269,7 +346,7 @@
         });
 
         // Go back button functionality
-        goBackBtn.addEventListener('click', function() {
+        goBackBtn.addEventListener('click', function () {
             // Restore state
             dreamInput.value = gameState.dreamText;
             fighter1Select.value = gameState.fighter1;
@@ -281,7 +358,7 @@
         });
 
         // Send button functionality
-        sendBtn.addEventListener('click', function() {
+        sendBtn.addEventListener('click', function () {
             const message = userInput.value.trim();
             if (!message) return;
 
@@ -297,7 +374,7 @@
         });
 
         // Enter key to send message
-        userInput.addEventListener('keypress', function(e) {
+        userInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 sendBtn.click();
@@ -308,21 +385,22 @@
         function addMessage(text, type, author) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${type}`;
-            
+
             const authorDiv = document.createElement('div');
             authorDiv.className = 'message-author';
             authorDiv.textContent = author;
-            
+
             const textDiv = document.createElement('div');
             textDiv.textContent = text;
-            
+
             messageDiv.appendChild(authorDiv);
             messageDiv.appendChild(textDiv);
             conversationContent.appendChild(messageDiv);
-            
+
             // Scroll to bottom
             conversationContent.scrollTop = conversationContent.scrollHeight;
         }
     </script>
 </body>
+
 </html>
