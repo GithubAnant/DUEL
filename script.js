@@ -16,12 +16,6 @@ import {
   pipeline,
 } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers/dist/transformers.min.js";
 
-// // // for gpt 2 (FALLBACK)
-// import {
-// //   AutoTokenizer,
-// //   pipeline,
-// // } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js";
-
 // AI Model Management
 let generator = null;
 let isModelLoaded = false;
