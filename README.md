@@ -47,7 +47,7 @@
 ---
 
 ## 🛠️ Customize
-- Add more moms or change personalities in `last.js`
+- Add more moms or change personalities in `script.js`
 - Edit argument list, UI, or styles as you like
 
 ---
