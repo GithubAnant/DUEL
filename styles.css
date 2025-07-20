@@ -359,13 +359,13 @@ body {
 
 /* Auto-fight button */
 .auto-fight-btn {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  background: linear-gradient(135deg, #000000, #474645);
   color: white;
   border: none;
-  padding: 15px 30px;
+  padding: 20px 30px;
   font-size: 18px;
   font-weight: bold;
-  border-radius: 50px;
+  border-radius: 20px;
   cursor: pointer;
   margin: 10px;
   transition: all 0.3s ease;
@@ -374,9 +374,8 @@ body {
 }
 
 .auto-fight-btn:hover {
-  background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+  background: linear-gradient(135deg, #201e1e, #616060);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(238, 90, 36, 0.3);
 }
 
 /* Typing indicator */

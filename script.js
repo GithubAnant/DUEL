@@ -484,6 +484,7 @@ function updateFightOptions() {
     fighter2Value !== "Me"
   ) {
     autoFightBtn.style.display = "inline-block";
+    fightBtn.style.display = "none"
   } else {
     autoFightBtn.style.display = "none";
   }
